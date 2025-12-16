@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+#BSUB -J mtl_manifest
+#BSUB -q standard
+#BSUB -n 1
+#BSUB -M 2000
+#BSUB -W 00:20
+#BSUB -R "span[hosts=1] rusage[mem=2000]"
+#BSUB -o logs/02_make_manifest.%J.out
+#BSUB -e logs/02_make_manifest.%J.err
+
+set -euo pipefail
+cd /home/ijonsdot/ilmur/mtlA_survey/New_test
+bash scripts/02_make_manifest.sh

@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+#BSUB -J mtl_filter_mlst
+#BSUB -q standard
+#BSUB -n 1
+#BSUB -M 2000
+#BSUB -W 01:00
+#BSUB -R "span[hosts=1] rusage[mem=2000]"
+#BSUB -o logs/04_filter_mlst.%J.out
+#BSUB -e logs/04_filter_mlst.%J.err
+
+set -euo pipefail
+cd /home/ijonsdot/ilmur/mtlA_survey/New_test
+
+bash scripts/04_filter_mlst_complete.sh

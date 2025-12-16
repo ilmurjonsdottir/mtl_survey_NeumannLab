@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+#BSUB -J mlst_chunk[1-1]
+#BSUB -q standard
+#BSUB -n 1
+#BSUB -M 4000
+#BSUB -W 12:00
+#BSUB -R "span[hosts=1] rusage[mem=4000]"
+#BSUB -o logs/03_mlst.%J.%I.out
+#BSUB -e logs/03_mlst.%J.%I.err
+
+set -euo pipefail
+cd /home/ijonsdot/ilmur/mtlA_survey/New_test
+
+source activate software-bundle
+
+# Edit these two variables before submitting:
+CHUNK_SIZE=100
+bash scripts/03_mlst_chunk.sh "$CHUNK_SIZE"

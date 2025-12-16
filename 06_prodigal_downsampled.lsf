@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+#BSUB -J prodigal_ds
+#BSUB -q standard
+#BSUB -n 4
+#BSUB -M 8000
+#BSUB -W 12:00
+#BSUB -R "span[hosts=1] rusage[mem=8000]"
+#BSUB -o logs/06_prodigal_ds.%J.out
+#BSUB -e logs/06_prodigal_ds.%J.err
+
+set -euo pipefail
+cd /home/ijonsdot/ilmur/mtlA_survey/New_test
+
+source activate software-bundle
+bash scripts/06_prodigal_downsampled.sh
